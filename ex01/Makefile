@@ -1,27 +1,28 @@
-C++ = c++
-C++_FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-INFILES = 	main.cpp\
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+RM = rm -f
+SRCS = 	main.cpp\
 			Contact.cpp\
 			phonebook.cpp\
-			search_contact.cpp\
+			search_contact.cpp
 
-OBJFILES = $(INFILES:.cpp=.o)
+OBJFILES = $(SRCS:.cpp=.o)
 
 NAME = phonebook
 
 all: $(NAME)
 
 $(NAME):$(OBJFILES)
-	$(C++) $(C++_FLAGS) $(OBJFILES) -o $(NAME) 
+	$(CXX) $(CXXFLAGS) $(OBJFILES) -o $(NAME)
 
 %.o: %.cpp
-	$(C++) $(C++_FLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJFILES)
+	$(RM) $(OBJFILES)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
