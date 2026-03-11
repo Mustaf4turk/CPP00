@@ -1,7 +1,7 @@
 #ifndef MAIN_H
 # define MAIN_H
 
-# include "PhoneBook.hpp"
+# include "phonebook.hpp"
 
 void	search_contact(PhoneBook *phoneBook);
 

@@ -1,31 +1,30 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <ctime>
+# include <iostream>
+# include <string>
+# include <iomanip>
+# include <ctime>
 
-#include "Contact.hpp"
+# include "Contact.hpp"
 
-#define MAX_CONTACS 8
+# define MAX_CONTACTS 8
 
-
-class phonebook 
+class PhoneBook
 {
-    private:
-    int     num_entries:
+	private:
+		int _num_entries;
 
-    public:
-    contact contacts[MAX_CONTACS];
+	public:
+		Contact contacts[MAX_CONTACTS];
 
-    Phonebook();
-    ~Phonebook();
+		PhoneBook();
+		~PhoneBook();
 
-    void addContact(stdd::string firstname,stdd::string lastname, stdd:string Darkest_secret, stdd::string nick_name
-                    stdd:string phone_number);
-    int getNumEntries();
+		void addContact(std::string first_name, std::string last_name, std::string nick_name,
+						std::string phone_number, std::string darkest_secret);
+		int getNumEntries();
 };
 
-int search_oldiest_entrie(contac contacts[MAX_CONTACS]);
+int search_oldest_entry(Contact contacts[MAX_CONTACTS]);
 
 #endif
