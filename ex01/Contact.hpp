@@ -1,7 +1,6 @@
 #ifndef CONTACT_H
 # define CONTACT_H
 # include <string>
-# include <ctime>
 
 class Contact
 {
@@ -11,7 +10,6 @@ class Contact
 		std::string _Nick_name;
 		std::string _Phone_number;
 		std::string _Darkest_secret;
-		time_t 		_Created;
 
 	public:
 
@@ -26,6 +24,5 @@ class Contact
 		std::string	getNick_name() const;
 		std::string	getPhone_number() const;
 		std::string	getDarkest_secret() const;
-		time_t		getCreated() const;
 };
 #endif

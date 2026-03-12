@@ -4,7 +4,9 @@ Contact::Contact()
 {
 	_First_name = "";
 	_Last_name = "";
-	_Created = time(&_Created);
+	_Nick_name = "";
+	_Phone_number = "";
+	_Darkest_secret = "";
 }
 
 Contact::Contact(std::string first_name, std::string last_name, std::string nick_name,
@@ -15,7 +17,6 @@ Contact::Contact(std::string first_name, std::string last_name, std::string nick
 	_Nick_name = nick_name;
 	_Phone_number = phone_number;
 	_Darkest_secret = darkest_secret;
-	time(&_Created);
 }
 
 Contact::~Contact()
@@ -46,9 +47,4 @@ std::string	Contact::getPhone_number() const
 std::string	Contact::getDarkest_secret() const
 {
 	return (_Darkest_secret);
-}
-
-time_t		Contact::getCreated() const
-{
-	return (_Created);
 }
