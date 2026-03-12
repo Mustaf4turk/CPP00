@@ -13,6 +13,7 @@ class PhoneBook
 {
 	private:
 		int _num_entries;
+		int _next_index;
 
 	public:
 		Contact contacts[MAX_CONTACTS];
@@ -24,7 +25,5 @@ class PhoneBook
 						std::string phone_number, std::string darkest_secret);
 		int getNumEntries();
 };
-
-int search_oldest_entry(Contact contacts[MAX_CONTACTS]);
 
 #endif

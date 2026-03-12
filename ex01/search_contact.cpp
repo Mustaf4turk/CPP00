@@ -1,4 +1,4 @@
-#include <limits>
+#include <sstream>
 #include "main.hpp"
 
 static void print_text(std::string text, bool newline)
@@ -45,26 +45,31 @@ static void print_phonebook_entries(PhoneBook *phoneBook)
 
 void search_contact(PhoneBook *phoneBook)
 {
+	std::string	line;
+	if (phoneBook->getNumEntries() == 0)
+	{
+		std::cout << "Phonebook is empty." << std::endl;
+		return;
+	}
 	int index = 0;
 	print_column_titles();
 	print_phonebook_entries(phoneBook);
 	std::cout << "Enter index: ";
-	if (!(std::cin >> index))
+	if (!std::getline(std::cin, line))
 	{
+		std::cin.clear();
+		if (g_stop)
+			return;
 		std::cout << "Invalid index" << std::endl;
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	}
-	else if (index > 0 && index <= phoneBook->getNumEntries())
-	{
-		print_contact(phoneBook->contacts[index - 1]);
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 	else
 	{
-		std::cout << "invalid index" << std::endl;
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::istringstream iss(line);
+		if (!(iss >> index) || (iss >> std::ws, !iss.eof()))
+			std::cout << "Invalid index" << std::endl;
+		else if (index > 0 && index <= phoneBook->getNumEntries())
+			print_contact(phoneBook->contacts[index - 1]);
+		else
+			std::cout << "Invalid index" << std::endl;
 	}
 }
